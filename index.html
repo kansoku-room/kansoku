@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>みーちゃん観測部屋</title>
+
+<style>
+
+body {
+  background-color:black;
+  color:#00ffcc;
+  font-family: "MS Gothic", monospace;
+  text-align: center;
+  margin-left: 170px;
+  cursor: url('cursor.png') 16 16, auto;
+}
+
+a:hover {
+  cursor:  pointer;
+}
+
+a {
+  color: pink;
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.rainbow {
+  background: linear-gradient(
+    90deg,
+    red, orange, yellow, lime, cyan, blue, magenta
+  );
+  background-size: 30%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowMove 5s linear infinite;
+}
+
+@keyframes rainbowMove {
+  0% {background-position: 0%;}
+  100% {background-position: 30%;}
+}
+
+#sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 160px;
+  height: 100%;
+  background: #111;
+  color: #00ffcc;
+  padding: 10px;
+  font-size: 12px;
+}
+
+button {
+  background: black;
+  color: #00ffcc;
+  border: 1px solid #00ffcc;
+  padding: 5px 10px;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: #00ffcc;
+  color: black;
+}
+
+p {
+  margin: 12px 0;
+}
+
+#sidebar a:hover {
+  color: #fff;
+}
+
+body {
+  transition: background-color 1s, color 1s;
+}
+
+#mofu {
+  margin-top: 50px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 600px) {
+
+  body {
+    margin-left: 0;
+  }
+
+  #sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    font-size: 14px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<div id="sidebar">
+  <p>▶ 観測中</p>
+  <p>▶ 対象：みーちゃん</p>
+  <p id="status">▶ 状態：安定</p>
+
+  <p style="color:#111;" onclick="location.href='secret.html'">.</p>
+
+  <hr>
+
+  <p><a href="index.html">トップ</a></p>
+  <p><a href="prof.html">観測対象</a></p>
+  <p><a href="nikki.html">観測記録</a></p>
+</div>
+
+<h1 class="blink rainbow">☆みーちゃん観測部屋へようこそ☆</h1>
+
+<p>ここはみーちゃんの日常を観測する場所です</p>
+
+<p>深淵を覗くとき深淵もまたこちらを覗いているのだ(^^)</p>
+
+
+
+
+
+<hr>
+
+<img src="mii.gif" width="150">
+
+<p>観測係：ねこっぽいなにか</p>
+<p>たぶんねこ。確信はない...</p>
+<p id="msg">ねこっぽいなにかがこちらを見ている</p>
+
+<button id="mofu" onclick="changeText();playSound();countUp()">もふもふ</button>
+<audio id="sound" src="sound.mp3"></audio>
+
+<script>
+/* クリックで変わる */
+var msgs = [
+  "またここにいる",
+  "平和だねぇ",
+  "ニャんて日だ！！！",
+  "観測中……",
+  "……ｚｚｚ"
+];
+
+function changeText() {
+  var random = Math.floor(Math.random() * msgs.length);
+  document.getElementById("msg").innerText = msgs[random];
+}
+
+function playSound() {
+  document.getElementById("sound").play();
+}
+
+setTimeout(function() {
+  document.getElementById("status").innerText = "▶ 状態：観測中";
+}, 5000);
+
+setTimeout(function() {
+  document.getElementById("status").innerText = "▶ 状態：異常？";
+}, 10000);
+
+function flash() {
+  document.body.style.backgroundColor = "white";
+  setTimeout(function() {
+    document.body.style.backgroundColor = "black";
+  }, 200);
+}
+
+var count = 0;
+
+function countUp() {
+  count++;
+
+  if (count == 5) {
+    document.getElementById("msg").innerText = "…さわりすぎ";
+  }
+
+  if (count == 10) {
+    document.body.style.backgroundColor = "black";
+    document.getElementById("msg").innerText = "じーっ";
+  }
+
+  if (count == 15) {
+    document.getElementById("msg").innerText = "まだいるの？";
+  }
+
+  if (count == 20) {
+  document.getElementById("msg").innerText = "ゆっくりしていってね♡♡♡";
+
+  document.body.style.backgroundColor = "#ff69b4";
+  document.body.style.color = "white";
+
+  setTimeout(function() {
+    document.body.style.backgroundColor = "black";
+    document.body.style.color = "#00ffcc";
+  }, 5000);
+ }
+}
+</script>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>プロフィール</title>
+
+<style>
+body {
+  background-color:black;
+  color:#00ffcc;
+  font-family: "MS Gothic", monospace;
+  text-align: center;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>観測対象</h1>
+
+<p>識別名：みーちゃん（仮）</p>
+<p>年齢：不明</p>
+<p>生息地：日本</p>
+
+<hr>
+
+<p>✧ 行動記録</p>
+<p>・夜行性</p>
+<p>・単独行動を好むが完全な孤独は避ける</p>
+
+<hr>
+
+<p>✧ 嗜好</p>
+<p>・おふとん</p>
+
+<hr>
+
+<p id="secret">■ 状態：安定</p>
+
+<p>※この記録は観測係によって編集されています</p>
+
+<br>
+
+<a href="index.html">← 観測部屋に戻る</a>
+
+<script>
+/* ちょっと不穏にする */
+setTimeout(function() {
+  document.getElementById("secret").innerText = "■ 状態：観測されている";
+}, 7000);
+</script>
+
+</body>
+</html>
